@@ -194,7 +194,8 @@ def wrap_index_one(input_to_index: InputToIndex) -> IndexingResult:
             )
             for id_, identifier in table.experiment_identifiers():
                 selr = table.select(table["id"] == id_)
-                calx, caly, _ = selr["xyzcal.px"].parts()
+                calx, caly, _ = selr["xyzcal.px"].parts() ##line where error happens for refinement_protocol.mode=None
+                #probably because this way there is no "xyzcal.px"
                 obsx, obsy, _ = selr["xyzobs.px.value"].parts()
                 if "delpsical.rad" in selr:
                     delpsi = selr["delpsical.rad"]
